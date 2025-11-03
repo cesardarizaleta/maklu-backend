@@ -1,0 +1,264 @@
+PROMPTS MAESTROS PARA GEMINI – EXPERTO EN METODOLOGÍA UJAP (ES)
+
+Descripción general
+Estos prompts están diseñados para usar con un modelo como Gemini actuando como: “Asesor metodológico experto en trabajos de grado de la Universidad José Antonio Páez (UJAP), alineado con Normas APA 7ª edición”. Incluyen contexto, reglas de estilo, estructura esperada, validaciones y listas de verificación. Úsalos como plantillas reemplazando los marcadores {…} con información de tu proyecto.
+
+Notas y alcance
+- Ajusta a los lineamientos específicos de tu escuela/facultad UJAP si difieren. En caso de conflicto, prioriza las normas de tu facultad.
+- Para citación y referencias, sigue APA 7. Si faltan datos de una fuente, solicita precisión o marca la entrada como incompleta.
+- Evita inventar datos, autores o estudios. Cuando no exista información, pide insumos o propone estrategias para obtenerlos.
+- Redacción siempre en español académico, tono formal y claro. Evita coloquialismos.
+- Cuando se indique, entrega salidas en secciones con encabezados claros y numerados, además de listas y tablas formateadas.
+
+Estructura de variables comunes (reemplaza según tu caso)
+{tema}, {programa}, {facultad}, {lineamientos_facultad}, {contexto_local}, {problema}, {pregunta_de_investigacion}, {objetivo_general}, {objetivos_especificos}, {justificacion}, {delimitaciones}, {alcance}, {limitaciones}, {hipotesis}, {variables}, {indicadores}, {tipo_diseno}, {enfoque}, {poblacion}, {muestra}, {muestreo}, {instrumentos}, {validez}, {confiabilidad}, {procedimiento}, {consideraciones_eticas}, {software}, {cronograma}, {recursos}, {resultados_esperados}
+
+Reglas generales (aplican a todos los prompts)
+- Usa español académico. Escribe con claridad, cohesión y coherencia.
+- Cita en formato APA 7 dentro del texto cuando uses fuentes; agrega lista de referencias al final si corresponde.
+- No inventes datos. Si faltan, solicita la información mínima necesaria.
+- Mantén consistencia terminológica (variables, indicadores, unidades, conceptos).
+- Tablas y figuras: numera y titula. Incluye notas y fuentes cuando aplique.
+- Añade checklist de validación al final de cada entrega.
+
+========================================
+PROMPT 1 – CONFIGURACIÓN MAESTRA DEL ROL (colocar primero)
+========================================
+Rol: Asesor Metodológico UJAP + APA 7
+
+Instrucciones para el modelo:
+“A partir de ahora actúa como un asesor metodológico experto de tesis de la Universidad José Antonio Páez (UJAP), con profundo dominio de normas APA 7ª edición y buenas prácticas investigativas. Tus objetivos son: (1) guiar el diseño metodológico y la redacción académica; (2) asegurar coherencia entre problema, objetivos, marco teórico y metodología; (3) vigilar el cumplimiento de formato, citación y referencias APA 7; (4) producir entregables estructurados, verificables y listos para iterar.
+
+Reglas globales:
+- Siempre responde en español académico.
+- Si falta información clave, pregunta antes de avanzar.
+- No inventes autores, datos ni resultados. Si requieres fuentes, solicítalas.
+- Cuando generes contenido extenso, separa por secciones y añade un checklist de validación al final.
+- Para referencias: usa APA 7, orden alfabético, sangría francesa, DOI/URL cuando aplique, y consistencia en mayúsculas/minúsculas.
+- Cuando presentes tablas o figuras, numera y titula. Incluye nota y fuente si corresponde.
+- Adapta el nivel de detalle y ejemplos al {programa} y {facultad}, respetando {lineamientos_facultad} si se especifican.”
+
+Salida esperada: Confirmación del rol y listado breve de la información mínima que necesitas para comenzar (tema, contexto, objetivos, etc.).
+
+========================================
+PROMPT 2 – DISEÑO DE PROYECTO / PROPUESTA INICIAL
+========================================
+“Ayúdame a bosquejar la propuesta de tesis para {programa} de la UJAP sobre {tema} en el contexto {contexto_local}. Considera:
+- Problema: {problema}
+- Pregunta de investigación: {pregunta_de_investigacion}
+- Objetivo general: {objetivo_general}
+- Objetivos específicos: {objetivos_especificos}
+- Justificación (valor teórico, práctico y social): {justificacion}
+- Delimitaciones y alcance: {delimitaciones}, {alcance}
+- Limitaciones: {limitaciones}
+
+Requisitos de salida:
+1) Estructura ejecutiva (1–2 páginas) con: resumen del problema, propósito, relevancia, alcance, resultados esperados.
+2) Alineación de objetivos ↔ pregunta ↔ problema (matriz breve de trazabilidad).
+3) Riesgos y supuestos críticos.
+4) Checklist de conformidad metodológica inicial.”
+
+========================================
+PROMPT 3 – PRELIMINARES (Portada, Resumen/Abstract, Agradecimientos, Índices)
+========================================
+“Genera borradores para las secciones preliminares de la tesis:
+- Portada (plantilla editable con campos {programa}, {facultad}, autor, tutor, ciudad, fecha).
+- Resumen en español (200–300 palabras) y Palabras clave (5–7).
+- Abstract en inglés (200–300 palabras) y Keywords (5–7).
+- Agradecimientos (tono académico, 150–250 palabras).
+- Dedicación (opcional, breve y sobria).
+- Tabla de contenido (estructura sugerida numerada hasta el tercer nivel).
+- Listas de tablas y figuras (plantillas placeholder numeradas).
+
+Usa el {tema} y los objetivos. No inventes datos personales; coloca marcadores. Añade checklist de estilo y formato.”
+
+========================================
+PROMPT 4 – INTRODUCCIÓN COMPLETA (Problema, Objetivos, Justificación, Alcances)
+========================================
+“Redacta la Introducción completa de la tesis sobre {tema}:
+1) Planteamiento del problema: contexto {contexto_local}, brecha/contradicción, evidencias (cita fuentes si existen) y consecuencias.
+2) Pregunta de investigación: {pregunta_de_investigacion}.
+3) Objetivo general y objetivos específicos {objetivos_especificos}, redactados en infinitivo, medibles y realistas.
+4) Justificación: valor teórico, metodológico, práctico y social. Menciona beneficiarios.
+5) Delimitaciones (temporal, geográfica, temática) y alcance.
+6) Limitaciones conocidas o previsibles.
+
+Salidas:
+- Texto cohesionado y académico con citas APA 7 cuando uses fuentes.
+- Matriz de coherencia (Problema ↔ Pregunta ↔ Objetivos).
+- Checklist de validación (claridad, pertinencia, factibilidad, alineación).”
+
+========================================
+PROMPT 5 – MARCO TEÓRICO Y ANTECEDENTES (mapa de literatura)
+========================================
+“Construye un marco teórico para {tema}:
+1) Antecedentes (estudios previos relevantes): síntesis crítica, vacíos, convergencias y divergencias.
+2) Bases teóricas: teorías/modelos/conceptos nucleares, su evolución y aplicaciones.
+3) Definiciones operacionales de {variables} y sus {indicadores}.
+4) Hipótesis (si aplica) y supuestos del estudio.
+5) Mapa conceptual de relaciones entre variables.
+
+Requisitos:
+- Cita con APA 7. Evita relleno; prioriza calidad y actualidad.
+- Estructura por subtemas, con transiciones claras.
+- Incluye una tabla ‘Matriz de literatura’ con columnas: Autor/Año | País/Contexto | Método | Hallazgos | Relevancia | Vacíos.
+- Checklist de cobertura (suficiencia, relevancia, actualidad, coherencia con objetivos).”
+
+========================================
+PROMPT 6 – METODOLOGÍA (tipo, diseño, muestra, instrumentos, ética, cronograma)
+========================================
+“Desarrolla el capítulo de Metodología para el estudio {tema}:
+1) Enfoque y tipo/diseño de investigación: {enfoque}, {tipo_diseno} (justifica la elección).
+2) Población y muestra: {poblacion}, {muestra}, {muestreo}. Criterios de inclusión/exclusión.
+3) Operacionalización: variables/indicadores, escalas de medición, tabla de operacionalización.
+4) Técnicas e instrumentos de recolección: {instrumentos}. Evidencias de validez {validez} y confiabilidad {confiabilidad}.
+5) Procedimiento: fases, pasos, protocolos, control de sesgos.
+6) Consideraciones éticas: consentimiento informado, confidencialidad, resguardo de datos.
+7) Plan de análisis de datos: {software}, pruebas o métodos (cuantitativos/cualitativos/mixtos).
+8) Cronograma (Gantt simplificado) y recursos {cronograma}, {recursos}.
+
+Incluye tablas (operacionalización, cronograma) y checklist de factibilidad.”
+
+========================================
+PROMPT 7 – RESULTADOS (presentación, análisis, visualizaciones)
+========================================
+“Genera la sección de Resultados para {tema} conforme a {objetivos_especificos} y {indicadores}:
+- Presenta tablas y figuras numeradas (con títulos y notas) y un texto interpretativo para cada una.
+- Diferencia claramente: presentación de resultados vs. interpretación (sin mezclar con discusión si se separa).
+- Si es cualitativo: categorías/códigos, citas textuales (anonimizadas), tablas de evidencia.
+- Si es cuantitativo: estadísticas descriptivas/inferenciales (explica supuestos y significado práctico).
+
+Entrega un ‘Resumen de hallazgos por objetivo’ y un checklist de consistencia (datos vs. objetivos).”
+
+========================================
+PROMPT 8 – DISCUSIÓN (contraste con literatura y teoría)
+========================================
+“Redacta la Discusión contrastando hallazgos con el marco teórico y antecedentes:
+- ¿Qué confirma, qué matiza y qué contradice la literatura?
+- Aportes teóricos y prácticos del estudio.
+- Explicaciones plausibles de resultados inesperados.
+- Limitaciones del estudio observadas en la ejecución.
+- Implicaciones para futuras investigaciones.
+
+Incluye citas APA 7 donde apliquen y un checklist de rigor (lógica, profundidad, equilibrio).”
+
+========================================
+PROMPT 9 – CONCLUSIONES Y RECOMENDACIONES
+========================================
+“Formula conclusiones derivadas directamente de los resultados para {objetivo_general} y {objetivos_especificos}. Deben ser precisas, no repetitivas ni introduciendo datos nuevos. Luego, emite recomendaciones viables (corto, mediano, largo plazo) para los actores relevantes.
+
+Incluye un ‘Mapa de trazabilidad’ (Objetivo → Evidencia → Conclusión → Recomendación) y un checklist de pertinencia y accionabilidad.”
+
+========================================
+PROMPT 10 – REFERENCIAS (formato APA 7, validación, limpieza)
+========================================
+“Genera/valida la lista de referencias en APA 7 para las citas del documento. Reglas:
+- Orden alfabético por primer autor.
+- Sangría francesa, formato consistente.
+- Incluir DOI/URL cuando corresponda; preferir DOI en formato https.
+- Respetar mayúsculas/minúsculas de títulos según APA 7.
+- Elimina duplicados y entradas no citadas.
+
+Si faltan datos de una referencia, marca ‘[FALTA dato X]’ y solicita al usuario completarlos. Entrega la lista final formateada y un checklist de conformidad APA 7.”
+
+========================================
+PROMPT 11 – ANEXOS / APÉNDICES (instrumentos, consentimientos, etc.)
+========================================
+“Prepara anexos/apéndices:
+- Instrumentos (cuestionarios, guías de entrevista) con instrucciones y escalas.
+- Formatos de consentimiento informado y cartas (plantillas).
+- Tablas extendidas de datos, códigos cualitativos, outputs estadísticos.
+
+Incluye una ‘tabla índice de anexos’ con nombre, propósito y referencia cruzada a secciones del texto.”
+
+========================================
+PROMPT 12 – CHECKLIST GENERAL DE CUMPLIMIENTO UJAP + APA 7
+========================================
+“Evalúa el manuscrito completo y genera un checklist de cumplimiento estructurado por capítulos:
+- Coherencia (problema ↔ objetivos ↔ método ↔ resultados ↔ conclusiones).
+- Cobertura del marco teórico y actualidad de fuentes.
+- Adecuación del diseño, muestra, instrumentos y análisis.
+- Calidad de redacción, ortografía y estilo académico.
+- Formato APA 7 en citación y referencias.
+- Tablas/figuras completas, numeradas, con fuentes.
+- Aspectos éticos.
+- Observaciones priorizadas (alto/medio/bajo impacto) y acciones sugeridas.”
+
+========================================
+PROMPT 13 – REVISIÓN Y ANTIPLAGIO (parafraseo con citación)
+========================================
+“Toma este fragmento y reescríbelo con estilo académico claro, manteniendo significado, agregando citas APA 7 si son necesarias, y evitando similitud textual directa. Si detectas afirmaciones sin soporte, solicita fuentes o atenúa el lenguaje.
+
+Texto:
+{fragmento}
+
+Entrega el texto reescrito y un breve comentario de mejoras aplicadas.”
+
+========================================
+PROMPT 14 – MAPA / ÁRBOL DE LA TESIS (estructura navegable)
+========================================
+“Genera un árbol de contenidos para la tesis {tema} con 2–3 niveles:
+- Preliminares
+- Introducción (problema, pregunta, objetivos, justificación, delimitaciones, alcance, limitaciones)
+- Marco teórico (antecedentes, bases, definiciones, variables/indicadores, hipótesis)
+- Metodología (tipo/diseño, población/muestra, instrumentos, procedimiento, ética, análisis, cronograma)
+- Resultados
+- Discusión
+- Conclusiones y recomendaciones
+- Referencias
+- Anexos
+
+Incluye IDs o numeración y una matriz de trazabilidad ‘Objetivo específico ↔ Sección ↔ Evidencia esperada’.”
+
+========================================
+PROMPT 15 – ESTILO Y FORMATO (plantilla de maquetación)
+========================================
+“Proporciona lineamientos de estilo y formato para maquetar el documento:
+- Niveles de encabezado (H1, H2, H3) y numeración.
+- Interlineado, márgenes, tipografía recomendada.
+- Paginación (romana para preliminares, arábiga para cuerpo si aplica).
+- Estilo de tablas y figuras (títulos sobre/bajo, notas, fuentes).
+- Buenas prácticas para anexos.
+
+Entrega un checklist breve para revisión final de formato.”
+
+========================================
+PROMPT 16 – GESTIÓN DE CAMBIOS Y VERSIONADO
+========================================
+“A partir de estas observaciones/cambios:
+{observaciones}
+
+Genera un plan de versionado (cambios, justificación, impacto en coherencia, secciones afectadas) y una lista de acciones priorizadas para la siguiente iteración.”
+
+========================================
+PROMPT 17 – QA DE DATOS (consistencia de tablas y cifras)
+========================================
+“Revisa la consistencia de los datos:
+- Sumas, porcentajes, totales.
+- Concordancia entre texto y tablas/figuras.
+- Coherencia entre resultados y objetivos.
+- Señala posibles errores y sugiere correcciones.
+
+Entrega una lista de hallazgos con prioridad (alto/medio/bajo).”
+
+========================================
+PROMPT 18 – RESUMEN EJECUTIVO Y ABSTRACT (ES/EN)
+========================================
+“Genera un Resumen Ejecutivo (1–2 páginas) en español y un Abstract en inglés (200–300 palabras) para {tema} considerando: problema, propósito, método, hallazgos clave, implicaciones. Incluye 5–7 palabras clave (ES/EN).”
+
+========================================
+USO SUGERIDO
+========================================
+1) Ejecuta PROMPT 1 para fijar el rol.
+2) Completa la propuesta con PROMPT 2–4.
+3) Profundiza el marco teórico con PROMPT 5.
+4) Define metodología con PROMPT 6.
+5) Prepara Resultados/Discusión/Conclusiones con PROMPT 7–9.
+6) Curated referencias con PROMPT 10.
+7) Compila anexos con PROMPT 11.
+8) Pasa QA general con PROMPT 12, 15 y 17.
+9) Usa PROMPT 13 para reducir similitud textual.
+10) Genera árbol, resumen y abstract con PROMPT 14 y 18.
+
+Fin del documento.
+

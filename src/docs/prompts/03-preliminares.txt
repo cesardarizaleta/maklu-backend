@@ -1,0 +1,12 @@
+PROMPT 3 – PRELIMINARES (Portada, Resumen/Abstract, Agradecimientos, Índices)
+
+“Genera borradores para las secciones preliminares de la tesis:
+- Portada (plantilla editable con campos {programa}, {facultad}, autor, tutor, ciudad, fecha).
+- Resumen en español (200–300 palabras) y Palabras clave (5–7).
+- Abstract en inglés (200–300 palabras) y Keywords (5–7).
+- Agradecimientos (tono académico, 150–250 palabras).
+- Dedicación (opcional, breve y sobria).
+- Tabla de contenido (estructura sugerida numerada hasta el tercer nivel).
+- Listas de tablas y figuras (plantillas placeholder numeradas).
+
+Usa el {tema} y los objetivos. No inventes datos personales; coloca marcadores. Añade checklist de estilo y formato.”
