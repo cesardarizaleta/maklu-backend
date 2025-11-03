@@ -1,0 +1,3 @@
+VARIABLES/PLACEHOLDERS COMUNES (reemplaza por tu caso)
+
+{tema}, {programa}, {facultad}, {lineamientos_facultad}, {contexto_local}, {problema}, {pregunta_de_investigacion}, {objetivo_general}, {objetivos_especificos}, {justificacion}, {delimitaciones}, {alcance}, {limitaciones}, {hipotesis}, {variables}, {indicadores}, {tipo_diseno}, {enfoque}, {poblacion}, {muestra}, {muestreo}, {instrumentos}, {validez}, {confiabilidad}, {procedimiento}, {consideraciones_eticas}, {software}, {cronograma}, {recursos}, {resultados_esperados}

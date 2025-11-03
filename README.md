@@ -25,6 +25,64 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Thesis Endpoints (prefixed with /api)
+
+Todas las rutas devuelven una respuesta estándar con el formato:
+
+```
+{
+  "success": true,
+  "message": "Text",
+  "data": { "section": "...", "subpart": "..." }
+}
+```
+
+Authentication (permanent API key):
+
+- POST /api/auth/apikey
+  - Body: { "owner": "optional string" }
+  - Response: { success, message, data: { apiKey, user: { id, owner } } }
+
+Use the API key in Authorization header as Bearer:
+
+```
+Authorization: Bearer <API_KEY>
+```
+
+Available routes (GET):
+
+Content templates:
+
+- /api/preliminaries
+- /api/preliminaries/cover
+- /api/preliminaries/signatures
+- /api/preliminaries/dedication
+- /api/preliminaries/acknowledgments
+- /api/preliminaries/table-of-contents
+- /api/preliminaries/lists/figures
+- /api/preliminaries/lists/tables
+- /api/preliminaries/lists/graphs
+- /api/preliminaries/abstract
+- /api/introduction
+- /api/chapters/theoretical-framework
+- /api/chapters/problem-analysis
+- /api/methodology
+- /api/methodology/methods
+- /api/methodology/techniques
+- /api/methodology/procedures
+- /api/methodology/work-plan
+- /api/methodology/timelines
+- /api/results
+- /api/conclusions
+- /api/references
+- /api/appendices
+
+Theses resource:
+
+- POST /api/theses  { title }
+- GET  /api/theses
+- GET  /api/theses/:id/tree
+
 ## Project setup
 
 ```bash
