@@ -8,6 +8,12 @@ import {
   Req,
   BadRequestException,
 } from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 import { ApiKeyGuard } from '../auth/guards/api-key.guard';
 import { ThesesService } from './theses.service.js';
 import type { ApiResponse } from '../common/responses/api-response';
@@ -18,11 +24,15 @@ import type { Request } from 'express';
 import type { AuthenticatedUser } from '../auth/guards/api-key.guard';
 
 @UseGuards(ApiKeyGuard)
+@ApiTags('theses')
+@ApiBearerAuth('bearer')
 @Controller('theses')
 export class ThesesController {
   constructor(private readonly thesesService: ThesesService) {}
 
   @Post()
+  @ApiOperation({ summary: 'Crear una tesis manualmente con título' })
+  @ApiOkResponse({ description: 'Tesis creada' })
   async create(
     @Req() req: Request,
     @Body() dto: CreateThesisDto,
@@ -33,6 +43,8 @@ export class ThesesController {
   }
 
   @Get()
+  @ApiOperation({ summary: 'Listar todas las tesis del usuario' })
+  @ApiOkResponse({ description: 'Listado de tesis' })
   async list(@Req() req: Request): Promise<ApiResponse> {
     const user = req.user as AuthenticatedUser;
     const theses = await this.thesesService.list(user);
@@ -40,6 +52,8 @@ export class ThesesController {
   }
 
   @Get(':id/tree')
+  @ApiOperation({ summary: 'Obtener árbol de partes de una tesis' })
+  @ApiOkResponse({ description: 'Árbol de partes' })
   async tree(
     @Req() req: Request,
     @Param('id') id: string,
@@ -49,7 +63,25 @@ export class ThesesController {
     return ok(parts, 'Thesis parts tree');
   }
 
+  @Get(':id/full')
+  @ApiOperation({ summary: 'Obtener una tesis completa con todas sus partes' })
+  @ApiOkResponse({
+    description: 'Tesis completa con contenido de todas las secciones',
+  })
+  async full(
+    @Req() req: Request,
+    @Param('id') id: string,
+  ): Promise<ApiResponse> {
+    const user = req.user as AuthenticatedUser;
+    const data = await this.thesesService.getFull(user, id);
+    return ok(data, 'Thesis full content');
+  }
+
   @Post('idea')
+  @ApiOperation({
+    summary: 'Generar una tesis a partir de una idea (opcional disciplina)',
+  })
+  @ApiOkResponse({ description: 'Generación iniciada; retorna id y título' })
   async createFromIdea(
     @Req() req: Request,
     @Body() dto: CreateThesisFromIdeaDto,
@@ -68,16 +100,5 @@ export class ThesesController {
       { id: thesis.id, title: thesis.title },
       'Thesis generation started',
     );
-  }
-
-  @Get(':id/parts/:key')
-  async getPart(
-    @Req() req: Request,
-    @Param('id') id: string,
-    @Param('key') key: string,
-  ): Promise<ApiResponse> {
-    const user = req.user as AuthenticatedUser;
-    const part = await this.thesesService.getPart(user, id, key);
-    return ok(part, 'Thesis part');
   }
 }

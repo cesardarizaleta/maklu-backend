@@ -157,6 +157,124 @@ export class ThesisGeneratorService {
       const discipline = thesis.discipline ?? undefined;
 
       const tasks: Array<Promise<void>> = [
+        // Preliminares
+        (() => {
+          const gen = () =>
+            this.gemini.generateWithContext(
+              contexts,
+              PROMPTS.preliminariesCover(topic, discipline),
+            );
+          return this.generateAndSave(
+            thesis,
+            'preliminaries.cover',
+            'Portada',
+            gen,
+          );
+        })(),
+        (() => {
+          const gen = () =>
+            this.gemini.generateWithContext(
+              contexts,
+              PROMPTS.preliminariesSignatures(),
+            );
+          return this.generateAndSave(
+            thesis,
+            'preliminaries.signatures',
+            'Firmas',
+            gen,
+          );
+        })(),
+        (() => {
+          const gen = () =>
+            this.gemini.generateWithContext(
+              contexts,
+              PROMPTS.preliminariesDedication(),
+            );
+          return this.generateAndSave(
+            thesis,
+            'preliminaries.dedication',
+            'Dedicatoria',
+            gen,
+          );
+        })(),
+        (() => {
+          const gen = () =>
+            this.gemini.generateWithContext(
+              contexts,
+              PROMPTS.preliminariesAcknowledgments(),
+            );
+          return this.generateAndSave(
+            thesis,
+            'preliminaries.acknowledgments',
+            'Agradecimientos',
+            gen,
+          );
+        })(),
+        (() => {
+          const gen = () =>
+            this.gemini.generateWithContext(
+              contexts,
+              PROMPTS.preliminariesTOC(topic),
+            );
+          return this.generateAndSave(
+            thesis,
+            'preliminaries.tableOfContents',
+            'Tabla de Contenidos',
+            gen,
+          );
+        })(),
+        (() => {
+          const gen = () =>
+            this.gemini.generateWithContext(
+              contexts,
+              PROMPTS.preliminariesListFigures(),
+            );
+          return this.generateAndSave(
+            thesis,
+            'preliminaries.lists.figures',
+            'Lista de Figuras',
+            gen,
+          );
+        })(),
+        (() => {
+          const gen = () =>
+            this.gemini.generateWithContext(
+              contexts,
+              PROMPTS.preliminariesListTables(),
+            );
+          return this.generateAndSave(
+            thesis,
+            'preliminaries.lists.tables',
+            'Lista de Tablas',
+            gen,
+          );
+        })(),
+        (() => {
+          const gen = () =>
+            this.gemini.generateWithContext(
+              contexts,
+              PROMPTS.preliminariesListGraphs(),
+            );
+          return this.generateAndSave(
+            thesis,
+            'preliminaries.lists.graphs',
+            'Lista de Gráficos',
+            gen,
+          );
+        })(),
+        (() => {
+          const gen = () =>
+            this.gemini.generateWithContext(
+              contexts,
+              PROMPTS.preliminariesAbstract(topic, discipline),
+            );
+          return this.generateAndSave(
+            thesis,
+            'preliminaries.abstract',
+            'Resumen / Abstract',
+            gen,
+          );
+        })(),
         // Introducción (granular)
         this.generateAndSave(
           thesis,
@@ -427,10 +545,79 @@ export class ThesisGeneratorService {
       ];
 
       await Promise.all(tasks);
+      // Asegurar tamaño mínimo total aproximado
+      await this.ensureMinWordCount(thesis, contexts, topic, discipline);
       await this.thesisRepo.update(thesis.id, { status: 'ready' });
     } catch (e) {
       await this.thesisRepo.update(thesis.id, { status: 'failed' });
       throw e;
+    }
+  }
+
+  private countWords(text: string): number {
+    return (text || '').replace(/\s+/g, ' ').trim().split(' ').filter(Boolean)
+      .length;
+  }
+
+  private async ensureMinWordCount(
+    thesis: Thesis,
+    contexts: string[],
+    topic: string,
+    discipline?: string,
+  ): Promise<void> {
+    const TARGET_MIN_WORDS = 12000; // ~50 páginas a ~240 palabras por página
+    const MAX_ROUNDS = 3;
+    const EXTRA_PER_EXPANSION = 600; // palabras aprox por expansión
+
+    const parts = await this.partRepo.find({ where: { thesisId: thesis.id } });
+    const total0 = parts.reduce(
+      (acc, p) => acc + this.countWords(p.content),
+      0,
+    );
+    if (total0 >= TARGET_MIN_WORDS) return;
+
+    const priorityKeys = [
+      'theoreticalFramework',
+      'theoretical.background',
+      'theoretical.bases',
+      'methodology',
+      'methodology.design',
+      'methodology.analysisPlan',
+      'results',
+      'discussion',
+      'conclusions',
+      'introduction.problemStatement',
+      'introduction.justification',
+    ];
+
+    let total = total0;
+    let round = 0;
+    while (total < TARGET_MIN_WORDS && round < MAX_ROUNDS) {
+      for (const key of priorityKeys) {
+        if (total >= TARGET_MIN_WORDS) break;
+        const part = parts.find((p) => p.key === key);
+        if (!part) continue;
+        try {
+          const add = await this.gemini.generateWithContext(
+            contexts,
+            PROMPTS.expandSection(
+              key,
+              topic,
+              part.content.slice(0, 1000),
+              EXTRA_PER_EXPANSION,
+              discipline,
+            ),
+          );
+          const newContent = `${part.content}\n\n${add.trim()}`;
+          part.content = newContent;
+          await this.partRepo.update({ id: part.id }, { content: newContent });
+          total += this.countWords(add);
+        } catch (e) {
+          const msg = e instanceof Error ? e.message : String(e);
+          this.logger.warn(`Expansion failed for ${key}: ${msg}`);
+        }
+      }
+      round++;
     }
   }
 
