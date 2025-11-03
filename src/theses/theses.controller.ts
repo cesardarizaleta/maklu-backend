@@ -63,6 +63,20 @@ export class ThesesController {
     return ok(parts, 'Thesis parts tree');
   }
 
+  @Get(':id/full')
+  @ApiOperation({ summary: 'Obtener una tesis completa con todas sus partes' })
+  @ApiOkResponse({
+    description: 'Tesis completa con contenido de todas las secciones',
+  })
+  async full(
+    @Req() req: Request,
+    @Param('id') id: string,
+  ): Promise<ApiResponse> {
+    const user = req.user as AuthenticatedUser;
+    const data = await this.thesesService.getFull(user, id);
+    return ok(data, 'Thesis full content');
+  }
+
   @Post('idea')
   @ApiOperation({
     summary: 'Generar una tesis a partir de una idea (opcional disciplina)',
@@ -86,18 +100,5 @@ export class ThesesController {
       { id: thesis.id, title: thesis.title },
       'Thesis generation started',
     );
-  }
-
-  @Get(':id/parts/:key')
-  @ApiOperation({ summary: 'Obtener una parte específica de la tesis por key' })
-  @ApiOkResponse({ description: 'Parte de tesis' })
-  async getPart(
-    @Req() req: Request,
-    @Param('id') id: string,
-    @Param('key') key: string,
-  ): Promise<ApiResponse> {
-    const user = req.user as AuthenticatedUser;
-    const part = await this.thesesService.getPart(user, id, key);
-    return ok(part, 'Thesis part');
   }
 }

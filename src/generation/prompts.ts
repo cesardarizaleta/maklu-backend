@@ -70,4 +70,34 @@ Contexto del tema: ${topic}. ${discipline ? `Disciplina: ${discipline}. ` : ''}A
     `Describe el Plan de Análisis: técnicas estadísticas/analíticas o de modelado apropiadas para ${topic}. ${discipline ? `Disciplina: ${discipline}. ` : ''}Indica software/herramientas a usar. 300-600 palabras.`,
   cronograma: (topic: string, discipline?: string) =>
     `Presenta un Cronograma tentativo por fases/meses para ${topic}. ${discipline ? `Disciplina: ${discipline}. ` : ''}Devuelve tabla o lista por etapas.`,
+  // Preliminares
+  preliminariesCover: (topic: string, discipline?: string) =>
+    `Genera el contenido de una Portada (solo texto, sin formato) para una tesis sobre ${topic}. ${discipline ? `Disciplina: ${discipline}. ` : ''}Incluye: institución, facultad/escuela, título completo, autor, tutor(es), ciudad/país, fecha. No inventes datos personales; usa campos marcadores [NOMBRE], [FECHA], etc.`,
+  preliminariesSignatures: () =>
+    `Crea una página de Firmas con líneas y roles (Autor, Tutor, Jurados, Coordinador). Usa marcadores [NOMBRE], [CARGO]. Devuelve solo el bloque de texto con la estructura.`,
+  preliminariesDedication: () =>
+    `Redacta una Dedicatoria breve (130-220 palabras) en tono formal y respetuoso.`,
+  preliminariesAcknowledgments: () =>
+    `Redacta Agradecimientos (200-350 palabras) a personas e instituciones, en tono académico.`,
+  preliminariesTOC: (topic: string) =>
+    `Genera una Tabla de Contenidos tentativa para una tesis sobre ${topic}. Muestra capítulos y subapartados con sangría y numeración (1., 1.1., 1.2., etc.). No generes números de página reales.`,
+  preliminariesListFigures: () =>
+    `Genera una Lista de Figuras con títulos tentativos (al menos 8-12). Formato: "Figura X. Título".`,
+  preliminariesListTables: () =>
+    `Genera una Lista de Tablas con títulos tentativos (al menos 8-12). Formato: "Tabla X. Título".`,
+  preliminariesListGraphs: () =>
+    `Genera una Lista de Gráficos con títulos tentativos (al menos 6-10). Formato: "Gráfico X. Título".`,
+  preliminariesAbstract: (topic: string, discipline?: string) =>
+    `Redacta un Resumen/Abstract estructurado (250-350 palabras) para la tesis sobre ${topic}. ${discipline ? `Disciplina: ${discipline}. ` : ''}Incluye propósito, método, resultados esperados y conclusiones, más 5-7 palabras clave.`,
+  // Expansión de secciones
+  expandSection: (
+    key: string,
+    topic: string,
+    currentExcerpt: string,
+    targetWords: number,
+    discipline?: string,
+  ) =>
+    `Amplía la sección "${key}" de la tesis sobre ${topic} con aproximadamente ${targetWords} palabras adicionales.
+No repitas el texto existente. Profundiza, agrega ejemplos, matices teóricos/metodológicos y contraargumentos.
+${discipline ? `Enfoca el desarrollo estrictamente en la disciplina: ${discipline}. ` : ''}Devuelve solo el texto nuevo que debe añadirse al final.`,
 };

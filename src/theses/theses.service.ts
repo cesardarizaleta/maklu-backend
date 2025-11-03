@@ -62,19 +62,64 @@ export class ThesesService {
     return tree;
   }
 
-  async getPart(
+  async getFull(
     user: AuthenticatedUser,
     id: string,
-    key: string,
-  ): Promise<ThesisPart> {
+  ): Promise<{
+    id: string;
+    title: string;
+    idea?: string | null;
+    discipline?: string | null;
+    status: string;
+    createdAt: Date;
+    updatedAt: Date;
+    parts: Record<
+      string,
+      {
+        id: string;
+        key: string;
+        title?: string | null;
+        content: string;
+        updatedAt: Date;
+      }
+    >;
+  }> {
     const thesis = await this.thesisRepo.findOne({
       where: { id, userId: user.id },
     });
     if (!thesis) throw new NotFoundException('Thesis not found');
-    const part = await this.partRepo.findOne({
-      where: { thesisId: thesis.id, key },
+    const parts = await this.partRepo.find({
+      where: { thesisId: thesis.id },
+      order: { key: 'ASC' },
     });
-    if (!part) throw new NotFoundException('Part not found');
-    return part;
+    const byKey: Record<
+      string,
+      {
+        id: string;
+        key: string;
+        title?: string | null;
+        content: string;
+        updatedAt: Date;
+      }
+    > = {};
+    for (const p of parts) {
+      byKey[p.key] = {
+        id: p.id,
+        key: p.key,
+        title: p.title ?? null,
+        content: p.content,
+        updatedAt: p.updatedAt,
+      };
+    }
+    return {
+      id: thesis.id,
+      title: thesis.title,
+      idea: thesis.idea ?? null,
+      discipline: thesis.discipline ?? null,
+      status: thesis.status,
+      createdAt: thesis.createdAt,
+      updatedAt: thesis.updatedAt,
+      parts: byKey,
+    };
   }
 }
