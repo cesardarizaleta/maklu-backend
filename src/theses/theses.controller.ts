@@ -6,13 +6,14 @@ import {
   Post,
   UseGuards,
   Req,
+  BadRequestException,
 } from '@nestjs/common';
 import { ApiKeyGuard } from '../auth/guards/api-key.guard';
 import { ThesesService } from './theses.service.js';
 import type { ApiResponse } from '../common/responses/api-response';
 import { ok } from '../common/responses/api-response';
-import type { CreateThesisDto } from './dto/create-thesis.dto';
-import type { CreateThesisFromIdeaDto } from './dto/create-thesis-from-idea.dto';
+import { CreateThesisDto } from './dto/create-thesis.dto';
+import { CreateThesisFromIdeaDto } from './dto/create-thesis-from-idea.dto';
 import type { Request } from 'express';
 import type { AuthenticatedUser } from '../auth/guards/api-key.guard';
 
@@ -54,9 +55,12 @@ export class ThesesController {
     @Body() dto: CreateThesisFromIdeaDto,
   ): Promise<ApiResponse> {
     const user = req.user as AuthenticatedUser;
+    if (!dto.idea || !dto.idea.trim()) {
+      throw new BadRequestException('idea is required');
+    }
     const thesis = await this.thesesService.createFromIdea(
       user,
-      dto.idea,
+      dto.idea.trim(),
       dto.discipline,
     );
     // Importante: devolver solo el título (y el id para futuras consultas)

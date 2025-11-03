@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import type { AuthenticatedUser } from '../auth/guards/api-key.guard';
@@ -16,8 +20,11 @@ export class ThesesService {
   ) {}
 
   async create(user: AuthenticatedUser, title: string): Promise<Thesis> {
+    if (!title || !title.trim()) {
+      throw new BadRequestException('Title is required');
+    }
     const thesis = this.thesisRepo.create({
-      title,
+      title: title.trim(),
       status: 'ready',
       userId: user.id,
     });
