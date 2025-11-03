@@ -1,6 +1,6 @@
-PROMPT 2 – DISEÑO DE PROYECTO / PROPUESTA INICIAL
+PROPUESTA INICIAL – DISEÑO DE PROYECTO
 
-“Ayúdame a bosquejar la propuesta de tesis para {programa} de la UJAP sobre {tema} en el contexto {contexto_local}. Considera:
+Elabora una propuesta de tesis para {programa} (UJAP) sobre {tema} en {contexto_local}, considerando:
 - Problema: {problema}
 - Pregunta de investigación: {pregunta_de_investigacion}
 - Objetivo general: {objetivo_general}
@@ -9,8 +9,9 @@ PROMPT 2 – DISEÑO DE PROYECTO / PROPUESTA INICIAL
 - Delimitaciones y alcance: {delimitaciones}, {alcance}
 - Limitaciones: {limitaciones}
 
-Requisitos de salida:
-1) Estructura ejecutiva (1–2 páginas) con: resumen del problema, propósito, relevancia, alcance, resultados esperados.
-2) Alineación de objetivos ↔ pregunta ↔ problema (matriz breve de trazabilidad).
-3) Riesgos y supuestos críticos.
-4) Checklist de conformidad metodológica inicial.”
+Entrega:
+1) Síntesis ejecutiva (1–2 páginas): problema, propósito, relevancia, alcance, resultados esperados.
+2) Matriz breve de trazabilidad: problema ↔ pregunta ↔ objetivo general ↔ específicos.
+3) Riesgos y supuestos críticos pertinentes.
+
+Estilo: académico, sin saludos ni meta‑comentarios. Formato limpio (máximo un salto entre párrafos). Citas/Referencias en APA 7 cuando corresponda.

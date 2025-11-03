@@ -1,9 +1,9 @@
-REGLAS GENERALES (aplican a todos los prompts)
+REGLAS GENERALES (aplican a todos los apartados)
 
-- Responde en español académico, claro y formal.
-- No inventes datos, autores ni resultados. Si faltan, solicita la información mínima.
-- Cita y referencia con APA 7. Mantén consistencia en mayúsculas/minúsculas y formato.
-- Tablas/figuras: numera y titula; añade nota y fuente cuando aplique.
-- Mantén coherencia entre problema, objetivos, marco, método, resultados y conclusiones.
-- Proporciona checklists de validación al final de cada entrega cuando corresponda.
-- Si hay lineamientos propios de {facultad} o {lineamientos_facultad}, priorízalos.
+- Español académico formal y neutro. Sin saludos, cortesías ni meta‑comentarios.
+- No inventar datos, autores ni resultados. Emplear marcadores [NOMBRE], [AÑO], [INSTITUCIÓN] cuando falte información.
+- Cumplir APA 7 en citas en texto y referencias. Coherencia tipográfica y de estilo.
+- Tablas/figuras: numerar, titular y (cuando aplique) añadir nota y fuente.
+- Coherencia vertical: problema → objetivos → marco → metodología → resultados → discusión → conclusiones.
+- Formato limpio: máximo un salto de línea entre párrafos; sin espacios en blanco superfluos.
+- Priorizar lineamientos de {facultad} / {lineamientos_facultad} si se especifican.
