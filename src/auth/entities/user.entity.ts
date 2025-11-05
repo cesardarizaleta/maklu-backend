@@ -20,9 +20,9 @@ export class User {
   @Index({ unique: true })
   apiKey!: string;
 
-  @CreateDateColumn({ type: 'timestamptz' })
+  @CreateDateColumn()
   createdAt!: Date;
 
-  @UpdateDateColumn({ type: 'timestamptz' })
+  @UpdateDateColumn()
   updatedAt!: Date;
 }

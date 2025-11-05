@@ -11,8 +11,9 @@ export class GeminiService {
   // Rate limit y reintentos
   private readonly maxRetries: number;
   private readonly minIntervalMs: number; // separación mínima entre requests
+  private readonly maxConcurrent: number; // máximo de llamadas concurrentes
   private lastCallAt = 0;
-  private chain: Promise<void> = Promise.resolve();
+  private activeCalls = 0;
 
   constructor(private readonly config: ConfigService) {
     const apiKey = this.config.get<string>('GEMINI_API_KEY');
@@ -24,6 +25,7 @@ export class GeminiService {
     this.minIntervalMs = Number(
       this.config.get('GEMINI_MIN_INTERVAL_MS') ?? 7000,
     );
+    this.maxConcurrent = Number(this.config.get('GEMINI_MAX_CONCURRENT') ?? 3);
   }
 
   private async sleep(ms: number) {
@@ -43,15 +45,20 @@ export class GeminiService {
   }
 
   private async gated<T>(fn: () => Promise<T>): Promise<T> {
-    // Encadena llamadas para evitar concurrencia y respetar intervalo mínimo
-    this.chain = this.chain.then(async () => {
+    // Semáforo para controlar concurrencia máxima y intervalo mínimo entre llamadas
+    while (this.activeCalls >= this.maxConcurrent) {
+      await this.sleep(100); // Esperar hasta que haya slot disponible
+    }
+    this.activeCalls++;
+    try {
       const now = Date.now();
       const wait = Math.max(0, this.lastCallAt + this.minIntervalMs - now);
       if (wait > 0) await this.sleep(wait);
       this.lastCallAt = Date.now();
-    });
-    await this.chain;
-    return fn();
+      return await fn();
+    } finally {
+      this.activeCalls--;
+    }
   }
 
   private async callModel(input: string): Promise<string> {

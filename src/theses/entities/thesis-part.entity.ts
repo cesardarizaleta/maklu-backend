@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Thesis } from './thesis.entity.js';
+import { Thesis } from './thesis.entity';
 
 @Entity('thesis_parts')
 export class ThesisPart {
@@ -32,9 +32,9 @@ export class ThesisPart {
   @JoinColumn({ name: 'thesisId' })
   thesis!: Thesis;
 
-  @CreateDateColumn({ type: 'timestamptz' })
+  @CreateDateColumn()
   createdAt!: Date;
 
-  @UpdateDateColumn({ type: 'timestamptz' })
+  @UpdateDateColumn()
   updatedAt!: Date;
 }

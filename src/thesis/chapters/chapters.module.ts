@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ChaptersController } from './chapters.controller.js';
+import { ChaptersController } from './chapters.controller';
 import { ThesisSharedModule } from '../shared/thesis-shared.module';
 import { AuthModule } from '../../auth/auth.module';
 import { ApiKeyGuard } from '../../auth/guards/api-key.guard';

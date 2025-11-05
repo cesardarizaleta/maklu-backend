@@ -15,7 +15,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { ApiKeyGuard } from '../auth/guards/api-key.guard';
-import { ThesesService } from './theses.service.js';
+import { ThesesService } from './theses.service';
 import type { ApiResponse } from '../common/responses/api-response';
 import { ok } from '../common/responses/api-response';
 import { CreateThesisDto } from './dto/create-thesis.dto';
