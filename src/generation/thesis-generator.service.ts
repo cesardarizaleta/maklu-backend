@@ -1,11 +1,11 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { GeminiService } from './gemini.service.js';
-import { PromptLoaderService } from './prompt-loader.service.js';
-import { PROMPTS } from './prompts.js';
-import { Thesis } from '../theses/entities/thesis.entity.js';
-import { ThesisPart } from '../theses/entities/thesis-part.entity.js';
+import { GeminiService } from './gemini.service';
+import { PromptLoaderService } from './prompt-loader.service';
+import { PROMPTS } from './prompts';
+import { Thesis } from '../theses/entities/thesis.entity';
+import { ThesisPart } from '../theses/entities/thesis-part.entity';
 
 @Injectable()
 export class ThesisGeneratorService {

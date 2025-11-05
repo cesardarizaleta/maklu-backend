@@ -2,8 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Like, Repository } from 'typeorm';
 import type { AuthenticatedUser } from '../../auth/guards/api-key.guard';
-import { Thesis } from '../../theses/entities/thesis.entity.js';
-import { ThesisPart } from '../../theses/entities/thesis-part.entity.js';
+import { Thesis } from '../../theses/entities/thesis.entity';
+import { ThesisPart } from '../../theses/entities/thesis-part.entity';
 
 export interface UpdatePartPayload {
   title?: string | null;

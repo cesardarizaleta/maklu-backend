@@ -9,7 +9,7 @@ import {
   UpdateDateColumn,
   JoinColumn,
 } from 'typeorm';
-import { User } from '../../auth/entities/user.entity.js';
+import { User } from '../../auth/entities/user.entity';
 import { ThesisPart } from './thesis-part.entity';
 
 export type ThesisStatus = 'generating' | 'ready' | 'failed';
@@ -42,9 +42,9 @@ export class Thesis {
   @OneToMany(() => ThesisPart, (p: ThesisPart) => p.thesis, { cascade: true })
   parts!: ThesisPart[];
 
-  @CreateDateColumn({ type: 'timestamptz' })
+  @CreateDateColumn()
   createdAt!: Date;
 
-  @UpdateDateColumn({ type: 'timestamptz' })
+  @UpdateDateColumn()
   updatedAt!: Date;
 }

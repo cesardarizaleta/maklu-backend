@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ThesisResponseService } from './thesis-response.service';
 import { ThesisSectionsService } from './thesis-sections.service';
-import { Thesis } from '../../theses/entities/thesis.entity.js';
-import { ThesisPart } from '../../theses/entities/thesis-part.entity.js';
+import { Thesis } from '../../theses/entities/thesis.entity';
+import { ThesisPart } from '../../theses/entities/thesis-part.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Thesis, ThesisPart])],

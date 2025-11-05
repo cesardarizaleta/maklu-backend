@@ -6,9 +6,9 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import type { AuthenticatedUser } from '../auth/guards/api-key.guard';
-import { Thesis } from './entities/thesis.entity.js';
-import { ThesisPart } from './entities/thesis-part.entity.js';
-import { ThesisGeneratorService } from '../generation/thesis-generator.service.js';
+import { Thesis } from './entities/thesis.entity';
+import { ThesisPart } from './entities/thesis-part.entity';
+import { ThesisGeneratorService } from '../generation/thesis-generator.service';
 
 @Injectable()
 export class ThesesService {
