@@ -1,0 +1,797 @@
+{
+  "info": {
+    "_postman_id": "maklu-backend-collection",
+    "name": "Maklu Backend API",
+    "description": "Colección completa de endpoints para la API de Maklu Backend - Generación de Tesis",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "maklu-backend"
+  },
+  "item": [
+    {
+      "name": "Theses",
+      "item": [
+        {
+          "name": "Crear una tesis manualmente con título",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": "{{base_url}}/theses/"
+          },
+          "response": []
+        },
+        {
+          "name": "Listar todas las tesis del usuario",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/theses/"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener árbol de partes de una tesis",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/theses/:id/tree"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener una tesis completa con todas sus partes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/theses/:id/full"
+          },
+          "response": []
+        },
+        {
+          "name": "Generar una tesis a partir de una idea (opcional disciplina)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": "{{base_url}}/theses/idea"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Introduction",
+      "item": [
+        {
+          "name": "Listar partes disponibles de la introducción",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/introduction/"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener el planteamiento del problema",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/introduction/problem-statement"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener las preguntas de investigación",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/introduction/research-questions"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener la justificación",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/introduction/justification"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener el alcance",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/introduction/scope"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener las delimitaciones",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/introduction/delimitations"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener las limitaciones",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/introduction/limitations"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener el objetivo general",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/introduction/objectives/general"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener los objetivos específicos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/introduction/objectives/specific"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar una parte de la introducción por key",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": "{{base_url}}/thesis/:id/introduction/:key"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Chapters",
+      "item": [
+        {
+          "name": "Obtener el marco teórico/antecedentes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/chapters/theoretical-framework"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener análisis del problema/diagnóstico",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/chapters/problem-analysis"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar un capítulo por key",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": "{{base_url}}/thesis/:id/chapters/:key"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Methodology",
+      "item": [
+        {
+          "name": "Listar partes disponibles de la metodología",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/methodology/"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener métodos/diseño de investigación",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/methodology/methods"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener técnicas/instrumentos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/methodology/techniques"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener procedimientos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/methodology/procedures"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener plan de trabajo/plan de análisis",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/methodology/work-plan"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener cronograma",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/methodology/timelines"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar una parte de la metodología por key",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": "{{base_url}}/thesis/:id/methodology/:key"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Results",
+      "item": [
+        {
+          "name": "Obtener la sección de resultados",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/results/"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener la sección de discusión",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/results/discussion"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar una parte dentro de resultados (results o discussion)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": "{{base_url}}/thesis/:id/results/:key"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Conclusions",
+      "item": [
+        {
+          "name": "Obtener la sección de conclusiones",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/conclusions/"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar la sección de conclusiones",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": "{{base_url}}/thesis/:id/conclusions/"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "References",
+      "item": [
+        {
+          "name": "Obtener la sección de referencias",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/references/"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar la sección de referencias",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": "{{base_url}}/thesis/:id/references/"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Appendices",
+      "item": [
+        {
+          "name": "Obtener la sección de apéndices",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/appendices/"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar la sección de apéndices",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": "{{base_url}}/thesis/:id/appendices/"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Preliminaries",
+      "item": [
+        {
+          "name": "Listar partes disponibles de preliminares",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/preliminaries/"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener portada",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/preliminaries/cover"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener página de firmas",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/preliminaries/signatures"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener dedicatoria",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/preliminaries/dedication"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener agradecimientos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/preliminaries/acknowledgments"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener tabla de contenido",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/preliminaries/table-of-contents"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener lista de figuras",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/preliminaries/lists/figures"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener lista de tablas",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/preliminaries/lists/tables"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener lista de gráficos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/preliminaries/lists/graphs"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener el resumen/abstract",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              }
+            ],
+            "url": "{{base_url}}/thesis/:id/preliminaries/abstract"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar una parte de preliminares por key",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": "{{base_url}}/thesis/:id/preliminaries/:key"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "App",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{base_url}}/"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "apiKey",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "thesisId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
