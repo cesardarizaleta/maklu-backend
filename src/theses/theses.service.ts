@@ -71,6 +71,7 @@ export class ThesesService {
     idea?: string | null;
     discipline?: string | null;
     status: string;
+    progress: number; // porcentaje de completitud (0-100)
     createdAt: Date;
     updatedAt: Date;
     parts: Record<
@@ -111,12 +112,19 @@ export class ThesesService {
         updatedAt: p.updatedAt,
       };
     }
+    // Calcular progreso: número de partes generadas / total esperado
+    const expectedParts = 35; // aproximado basado en el número de secciones
+    const progress = Math.min(
+      100,
+      Math.round((Object.keys(byKey).length / expectedParts) * 100),
+    );
     return {
       id: thesis.id,
       title: thesis.title,
       idea: thesis.idea ?? null,
       discipline: thesis.discipline ?? null,
       status: thesis.status,
+      progress,
       createdAt: thesis.createdAt,
       updatedAt: thesis.updatedAt,
       parts: byKey,

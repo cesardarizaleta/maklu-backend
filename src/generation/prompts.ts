@@ -1,5 +1,5 @@
 export const PROMPTS = {
-  role: `Actúa como asesor metodológico experto UJAP y normas APA 7. Redacta siempre en español académico. Evita inventar datos, cita APA 7 cuando uses fuentes.`,
+  role: `Eres un generador de texto académico en español. Produce contenido directo, neutro y formal conforme a APA 7. No uses saludos, cortesías, meta-comentarios ni segunda persona. No generes Markdown ni formato especial; solo texto plano. Redacta el contenido final directamente sin introducciones ni explicaciones. Evita inventar datos, cita APA 7 cuando uses fuentes.`,
   titleFromIdea: (idea: string, discipline?: string) =>
     `A partir de esta idea de investigación, propone un título de tesis claro, específico, extenso (mínimo 15 palabras), en estilo académico, alineado a normas UJAP y APA:\n` +
     `Idea: ${idea}\n` +
@@ -14,7 +14,7 @@ ${discipline ? `Disciplina (rama): ${discipline}. ` : ''}Usa terminología, ejem
 ${discipline ? `Enfócate estrictamente en el marco teórico y antecedentes de la disciplina: ${discipline}. ` : ''}Incluye antecedentes clave con síntesis crítica, bases teóricas, definiciones operacionales y relaciones entre variables. 1500-2500 palabras. Cita APA 7 en texto y agrega una lista de referencias al final.`,
   methodology: (topic: string, discipline?: string) =>
     `Desarrolla la Metodología completa: enfoque, tipo/diseño, población y muestra, muestreo, operacionalización (tabla), instrumentos, validez/confiabilidad, procedimiento, ética, plan de análisis y cronograma.
-Contexto del tema: ${topic}. ${discipline ? `Disciplina: ${discipline}. ` : ''}Adecúa los métodos y técnicas metodológicas propios de esta disciplina. 1200-2000 palabras.`,
+Contexto del tema: ${topic}. ${discipline ? `Disciplina: ${discipline}. ` : ''}Adecúa los métodos y técnicas metodológicas propios de esta disciplina. 1200-2000 palabras. No uses saludos, meta-comentarios ni segunda persona. Redacta directamente el contenido académico.`,
   results: (topic: string, discipline?: string) =>
     `Esboza Resultados esperados o estructura de presentación de resultados para ${topic}. ${discipline ? `Disciplina: ${discipline}. ` : ''}Incluye ejemplos de tablas/figuras (títulos y notas) y texto interpretativo. 800-1200 palabras.`,
   discussion: (discipline?: string) =>
@@ -59,7 +59,7 @@ Contexto del tema: ${topic}. ${discipline ? `Disciplina: ${discipline}. ` : ''}A
   operacionalizacion: (topic: string, discipline?: string) =>
     `Elabora la Operacionalización de variables en formato de tabla: variable, dimensión, indicador, ítem/medición y escala. Tema: ${topic}. ${discipline ? `Disciplina: ${discipline}. ` : ''}`,
   instrumentos: (topic: string, discipline?: string) =>
-    `Describe los Instrumentos de recolección de datos (cuestionarios, guías, sensores, etc.) para ${topic}. ${discipline ? `Disciplina: ${discipline}. ` : ''}Incluye estructura, constructos y ejemplos de ítems. 400-700 palabras.`,
+    `Describe los Instrumentos de recolección de datos (cuestionarios, guías, sensores, etc.) para ${topic}. ${discipline ? `Disciplina: ${discipline}. ` : ''}Incluye estructura, constructos y ejemplos de ítems. 400-700 palabras. No uses saludos, meta-comentarios ni segunda persona. Redacta directamente el contenido académico.`,
   validezConfiabilidad: (topic: string, discipline?: string) =>
     `Propón estrategias de Validez y Confiabilidad/Homogeneidad para los instrumentos en ${topic}. ${discipline ? `Disciplina: ${discipline}. ` : ''}Incluye validación de contenido y métricas (alfa de Cronbach o equivalentes). 300-600 palabras.`,
   procedimiento: (topic: string, discipline?: string) =>
