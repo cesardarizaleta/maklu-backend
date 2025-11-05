@@ -14,6 +14,18 @@ async function bootstrap() {
   );
   app.setGlobalPrefix('api');
 
+  // CORS setup
+  const corsOrigins = process.env.CORS_ORIGINS
+    ? process.env.CORS_ORIGINS.split(',').map((origin) => origin.trim())
+    : ['http://localhost:4200', 'http://localhost:3000']; // defaults for dev
+
+  app.enableCors({
+    origin: corsOrigins,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type, Authorization',
+    credentials: true,
+  });
+
   // Swagger setup
   const config = new DocumentBuilder()
     .setTitle('Maklu API')
